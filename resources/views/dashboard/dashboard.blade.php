@@ -55,7 +55,7 @@
               <td>{{ $user->username }}</td>
               <td>{{ $user->fullname }}</td>
               <td>
-                <a href="/edit/{{ $user->id }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="/product/{{ $user->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a href="/delete/" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
               </td>
             </tr>

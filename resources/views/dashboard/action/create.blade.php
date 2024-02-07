@@ -26,7 +26,7 @@
                 </div>
                 @endif
                 <form action="/product" method="post" class="col">
-                    @method('post')
+                    @method('put')
                     @csrf
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Fullname</label>

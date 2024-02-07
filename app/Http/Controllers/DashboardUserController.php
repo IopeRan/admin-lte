@@ -58,20 +58,32 @@ class DashboardUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
+        $user = User::findOrFail($id);;
         return view('dashboard.action.edit', [
             'title' => 'Edit',
-            'active' => 'edit'
+            'active' => 'edit',
+            'user' => $user
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'fullname' => 'required',
+            'username' => 'required'
+        ];
+
+        $validated = $request->validate($rules);
+
+        User::where('id', $id)
+        ->update($validated);
+
+        return redirect()->back()->with('success', 'User Update Successfully');
     }
 
     /**

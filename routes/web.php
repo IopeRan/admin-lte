@@ -16,7 +16,9 @@ use App\Http\Controllers\DashboardUserController;
 */
 
 Route::get('/', [DashboardController::class,'index']);
-Route::get('/create', [DashboardUserController::class, 'create']);
+// Route::get('/create', [DashboardUserController::class, 'create']);
+// Route::get('/edit/{id}', [DashboardUserController::class, 'edit']);
+
 Route::resource('/product', DashboardUserController::class);
 
 
