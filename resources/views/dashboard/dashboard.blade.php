@@ -31,9 +31,9 @@
 
               <p>User Registrations</p>
             </div>
-            <div class="icon">
+            <a href="/create" class="icon">
               <i class="ion ion-person-add"></i>
-            </div>
+            </a>
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -55,13 +55,15 @@
               <td>{{ $user->username }}</td>
               <td>{{ $user->fullname }}</td>
               <td>
-                <a href="/edit/" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Update</a>
-                <a href="/delete/" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                <a href="/edit/{{ $user->id }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="/delete/" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
               </td>
             </tr>
             @endforeach
           </tbody>
         </table>
+        <div>
+        </div>
       </div>
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
