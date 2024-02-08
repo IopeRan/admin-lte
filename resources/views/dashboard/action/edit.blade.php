@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                  <h1 class="m-0">Create User</h1>
+                  <h1 class="m-0">Edit User</h1>
                 </div>
                 <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
                     {{ session('success') }}
                 </div>
                 @endif
-                <form action="/product/{{ $user->id }}" method="post" class="col">
+                <form action="/user/{{ $user->id }}" method="post" class="col">
                     @method('put')
                     @csrf
                     <div class="mb-3">

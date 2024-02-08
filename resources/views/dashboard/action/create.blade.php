@@ -25,7 +25,7 @@
                     {{ session('success') }}
                 </div>
                 @endif
-                <form action="/product" method="post" class="col">
+                <form action="/user" method="post" class="col">
                     @method('put')
                     @csrf
                     <div class="mb-3">

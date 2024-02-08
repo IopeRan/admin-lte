@@ -41,6 +41,11 @@
       <!-- /.row -->
       <!-- Main row -->
       <div class="row p-2">
+        @if(session('successDelete'))
+        <div class="alert alert-success" role="alert">
+            {{ session('successDelete') }}
+        </div>
+        @endif
         <table class="table text-center">
           <thead class="table-dark">
             <th>ID</th>
@@ -54,9 +59,13 @@
               <td>{{ $user->id }}</td>
               <td>{{ $user->username }}</td>
               <td>{{ $user->fullname }}</td>
-              <td>
-                <a href="/product/{{ $user->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="/delete/" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+              <td class="d-flex justify-content-center">
+                <a href="/user/{{ $user->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                <form action="/user/{{ $user->id }}" method="post">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger" onclick="return confirm('Confirm Delete?')"><i class="fa-solid fa-trash"></i></button>
+                </form>
               </td>
             </tr>
             @endforeach

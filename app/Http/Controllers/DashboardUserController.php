@@ -13,7 +13,16 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::get();
+
+        $countUser = User::count();
+
+        return view('dashboard.dashboard', [
+            'title' => 'Dashboard',
+            'active' => 'dashboard',
+            'users' => $users,
+            'countUser' => $countUser
+        ]);
     }
 
     /**
@@ -57,40 +66,41 @@ class DashboardUserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);;
-        return view('dashboard.action.edit', [
-            'title' => 'Edit',
-            'active' => 'edit',
-            'user' => $user
-        ]);
-    }
+        */
+        public function edit($id)
+        {
+            $user = User::findOrFail($id);;
+            return view('dashboard.action.edit', [
+                'title' => 'Edit',
+                'active' => 'edit',
+                'user' => $user
+            ]);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        $rules = [
-            'fullname' => 'required',
-            'username' => 'required'
-        ];
+        /**
+         * Update the specified resource in storage.
+         */
+        public function update(Request $request, $id)
+        {
+            $rules = [
+                'fullname' => 'required',
+                'username' => 'required'
+            ];
 
-        $validated = $request->validate($rules);
+            $validated = $request->validate($rules);
 
-        User::where('id', $id)
-        ->update($validated);
+            User::where('id', $id)
+            ->update($validated);
 
-        return redirect()->back()->with('success', 'User Update Successfully');
-    }
+            return redirect()->back()->with('success', 'User Update Successfully');
+        }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        User::destroy('id', $id);
+        return redirect('/user')->with('successDelete', 'User Delete Successfully');
     }
 }
