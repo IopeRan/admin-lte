@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('fullname');
             $table->string('password');
+            $table->string('image')->default('https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

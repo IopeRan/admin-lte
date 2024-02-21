@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardUserController extends Controller
 {
@@ -84,10 +85,18 @@ class DashboardUserController extends Controller
         {
             $rules = [
                 'fullname' => 'required',
-                'username' => 'required'
+                'username' => 'required',
+                'image' => 'file|mimes:jpg,jpeg,png'
             ];
 
             $validated = $request->validate($rules);
+
+            if($request->hasFile('image')) {
+                if($request->oldImage) {
+                    Storage::delete($request->oldImage);
+                }
+                $validated['image'] = $request->file('image')->store('user-images');
+            }
 
             User::where('id', $id)
             ->update($validated);

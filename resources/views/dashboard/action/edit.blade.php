@@ -25,7 +25,7 @@
                     {{ session('success') }}
                 </div>
                 @endif
-                <form action="/user/{{ $user->id }}" method="post" class="col">
+                <form action="/user/{{ $user->id }}" method="post" enctype="multipart/form-data" class="col">
                     @method('put')
                     @csrf
                     <div class="mb-3">
@@ -36,6 +36,12 @@
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username" placeholder="Username" class="form-control" value="{{ $user->username }}">
                     </div>
+                    <div class="mb-3">
+                        <input type="hidden" id="oldImage" name="oldImage" value="{{ $user->image }}">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" id="image" name="image" class="form-control">
+                    </div>
+                    <img src="{{ asset($user->image) }}" alt="{{ $user->username }}">
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-warning">Update</button>
                     </div>

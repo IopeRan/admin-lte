@@ -128,6 +128,11 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link"  href="/logout" role="button" onclick="return confirm('are you sure?')">
+            <i class="fa-solid fa-right-from-bracket text-danger"></i>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
